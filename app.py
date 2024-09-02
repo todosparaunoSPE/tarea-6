@@ -237,11 +237,12 @@ st.write(f"({CI_r_lower:.5f}, {CI_r_upper:.5f})")
 #show_pdf(pdf_path)
 
 
-# Cargar el archivo PDF
-pdf_file_path = "tarea-6.pdf"  # Cambia esto a la ruta de tu archivo PDF
+# Cargar y mostrar el PDF
+pdf_file = "tarea-6.pdf"
 
-# Enlace al visor de Google Docs
-pdf_url = f"https://docs.google.com/gview?url=http://your-domain.com/{pdf_file_path}&embedded=true"
-
-# Incrustar el PDF
-st.markdown(f'<iframe src="{pdf_url}" width="700" height="500" frameborder="0"></iframe>', unsafe_allow_html=True)
+# Usar st.markdown para incrustar el PDF
+with open(pdf_file, "rb") as f:
+    pdf_data = f.read()
+    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+    pdf_display = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="600" frameborder="0"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
