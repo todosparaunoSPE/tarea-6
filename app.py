@@ -231,7 +231,17 @@ st.write(f"({CI_r_lower:.5f}, {CI_r_upper:.5f})")
 
 
 
-# Visualizar PDF
-st.sidebar.subheader("Visualización de PDF")
-pdf_path = "tarea-6.pdf"  # Cambia esto por la ruta a tu archivo PDF
-show_pdf(pdf_path)
+## Visualizar PDF
+#st.sidebar.subheader("Visualización de PDF")
+#pdf_path = "tarea-6.pdf"  # Cambia esto por la ruta a tu archivo PDF
+#show_pdf(pdf_path)
+
+
+# Cargar el archivo PDF
+pdf_file_path = "tarea-6.pdf"  # Cambia esto a la ruta de tu archivo PDF
+
+# Enlace al visor de Google Docs
+pdf_url = f"https://docs.google.com/gview?url=http://your-domain.com/{pdf_file_path}&embedded=true"
+
+# Incrustar el PDF
+st.markdown(f'<iframe src="{pdf_url}" width="700" height="500" frameborder="0"></iframe>', unsafe_allow_html=True)
