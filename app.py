@@ -237,12 +237,15 @@ st.write(f"({CI_r_lower:.5f}, {CI_r_upper:.5f})")
 #show_pdf(pdf_path)
 
 
-# Cargar y mostrar el PDF
+# Nombre del archivo PDF
 pdf_file = "tarea-6.pdf"
 
-# Usar st.markdown para incrustar el PDF
+# Botón de descarga
 with open(pdf_file, "rb") as f:
     pdf_data = f.read()
-    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
-    pdf_display = f'<iframe src="data:application/pdf;base64,{pdf_base64}" width="700" height="600" frameborder="0"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
+    st.download_button(
+        label="Descargar PDF",
+        data=pdf_data,
+        file_name="tarea-6.pdf",
+        mime="application/pdf"
+    )
